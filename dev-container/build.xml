@@ -1,0 +1,15 @@
+
+<project name="Deploy" default="deploy" basedir="." xmlns:sf="antlib:com.salesforce">
+    <property file="build.properties"/>
+    <property environment="env"/>
+ 
+    <tstamp>
+        <format property="build.time" pattern="yyyy/MM/dd HH:mm:ss" />
+    </tstamp>
+ 
+    <target name="deploy">
+        <echo message="build: ${build.time}" />
+        <echo message="target: ${sf.username}" />
+        <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="src" maxPoll="100" />
+    </target>
+</project>
